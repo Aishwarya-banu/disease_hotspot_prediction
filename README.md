@@ -22,14 +22,17 @@ An interactive web dashboard to visualize and analyze disease hotspots across th
 
 ## 📁 Project Structure
 
-```
 📦 disease-hotspot-dashboard/
-├── main.py                      # Streamlit app logic
-├── all_years_gnn_predictions_semi_supervised.csv   # ML predictions
-├── all_pollutants_merged_inner.csv                 # Merged pollutant data
-├── requirements.txt            # Project dependencies
-├── README.md                   # Project documentation
-```
+├── 01_datacleaning_eda.ipynb                  # Initial EDA and data cleaning
+├── Feature_Engineering.ipynb                  # Feature transformation for modeling
+├── Semi_Supervised_Learning_Model.ipynb       # GNN-based semi-supervised learning implementation
+├── Supervised_Learning_Model.ipynb            # Baseline supervised models
+├── all_pollutants_merged_inner.csv            # Final pollutant dataset (EPA + harmonized)
+├── all_years_gnn_predictions_semi_supervised.csv # GNN output for county-wise hotspot scores
+├── main.py                                    # Streamlit app combining disease & pollution insights
+├── requirements.txt                           # Required Python dependencies for local setup
+├── us_counties.geojson                        # County-level GeoJSON for mapping
+├── README.md                                  # Project overview and usage instructions
 
 ---
 
