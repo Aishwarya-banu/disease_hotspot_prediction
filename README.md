@@ -1,7 +1,7 @@
 
 # 🌡️ US Disease Hotspot & Pollutant Dashboard
 
-![Dashboard Preview]<img width="945" alt="dashboard" src="https://github.com/user-attachments/assets/04969b53-0f3c-4d50-9ff7-97fbbf25d542" />
+Dashboard Preview<img width="945" alt="dashboard" src="https://github.com/user-attachments/assets/04969b53-0f3c-4d50-9ff7-97fbbf25d542" />
 
 
 An interactive web dashboard to visualize and analyze disease hotspots across the United States and their correlation with air pollutant levels. This tool combines **Graph Neural Network (GNN)** predictions with EPA pollution data to provide insights for public health research and environmental monitoring.
