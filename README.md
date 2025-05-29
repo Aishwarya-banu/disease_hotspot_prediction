@@ -22,12 +22,6 @@ An interactive web dashboard to visualize and analyze disease hotspots across th
 
 ## 📁 Project Structure
 
-Here’s the **updated project structure** for your GitHub `README.md`, based on the contents in the image you provided:
-
----
-
-## 📁 Project Structure
-
 ```
 📦 disease-hotspot-dashboard/
 ├── 01_datacleaning_eda.ipynb                  # Initial EDA and data cleaning
