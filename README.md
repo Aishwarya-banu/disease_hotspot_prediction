@@ -1,6 +1,3 @@
-Great! Here's your updated `README.md` with the deployed app link included:
-
----
 
 # 🌡️ US Disease Hotspot & Pollutant Dashboard
 
