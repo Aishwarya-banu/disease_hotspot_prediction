@@ -1,103 +1,106 @@
-# US Disease Hotspot & Pollutant Dashboard
+Great! Here's your updated `README.md` with the deployed app link included:
 
-## 🌡️ Overview
+---
 
-This project is an interactive web application built with Streamlit for visualizing and analyzing disease hotspots across the United States, with an integrated layer of pollutant data. It allows users to explore disease hotspot predictions, track trends over time, and investigate potential correlations with various environmental pollutants at the county level.
+# 🌡️ US Disease Hotspot & Pollutant Dashboard
 
-The dashboard provides county-level insights, enabling users to filter data by year, state, and specific counties. It features an interactive map for geospatial analysis, trend charts, and detailed statistics for selected pollutants.
+![Dashboard Preview](dashboard_preview.png)
 
-## ✨ Features
+An interactive web dashboard to visualize and analyze disease hotspots across the United States and their correlation with air pollutant levels. This tool combines **Graph Neural Network (GNN)** predictions with EPA pollution data to provide insights for public health research and environmental monitoring.
 
-* **Interactive Hotspot Map:** Visualize disease hotspot prediction scores across US counties using an interactive map. Marker size and color intensity reflect hotspot status and prediction scores.
-* **Dynamic Filtering:** Filter data by year, state, and select multiple counties for focused analysis.
-* **Trend Analysis:** View trends in hotspot counts over several years for the selected geographical scope.
-* **Pollutant Integration:**
-    * Load and merge pollutant data with hotspot information.
-    * Select specific pollutants from a dynamic list for detailed analysis.
-    * View key statistics (min, max, mean, median, std. dev) for the selected pollutant.
-    * Analyze pollutant distribution and average levels in hotspot vs. non-hotspot areas.
-    * Explore potential correlations between pollutant levels and hotspot prediction scores via scatter plots.
-    * Visualize average monthly trends for pollutants if monthly data is available.
-* **Top County/State Analysis:** Identify top hotspot counties and states with the most hotspots for a given year.
-* **Data Export:** Download the filtered dataset as a CSV file for offline analysis.
-* **Responsive UI:** The dashboard is designed to be responsive and accessible on various screen sizes.
+📍 **Live App:** [https://diseasehotspotprediction.streamlit.app/](https://diseasehotspotprediction.streamlit.app/)
+
+---
+
+## 🚀 Features
+
+* 🗺️ **Interactive Hotspot Map** – Visualize county-level GNN-based hotspot intensity
+* 📈 **Trend Forecasting** – Analyze past hotspot trends and forecast future ones
+* 🏆 **Top Counties & States** – Discover which regions are most affected
+* 🏭 **Pollutant Analysis** – Explore pollutant distributions and monthly variations
+* 💾 **Data Explorer** – View and export raw merged datasets
+
+---
+
+## 📁 Project Structure
+
+```
+📦 disease-hotspot-dashboard/
+├── main.py                      # Streamlit app logic
+├── all_years_gnn_predictions_semi_supervised.csv   # ML predictions
+├── all_pollutants_merged_inner.csv                 # Merged pollutant data
+├── requirements.txt            # Project dependencies
+├── README.md                   # Project documentation
+```
+
+---
 
 ## 📊 Data Sources
 
-The application utilizes two main CSV data files:
+* **Hotspot Predictions**: Semi-supervised GNN output identifying likely disease hotspot regions
+* **EPA Air Quality Data**: Historical pollution metrics including PM2.5, NO₂, SO₂, CO, and O₃ by county and month
 
-1.  **Hotspot Data (`all_years_gnn_predictions_semi_supervised.csv`):**
-    * Contains information on disease hotspots, including year, state, county, latitude, longitude, a binary hotspot indicator, and a hotspot prediction score (expected as `Predicted_Hotspot_GNN`).
-    * _Note: The application expects specific column names like 'Year', 'State Name', 'County Name', 'Predicted_Latitude', 'Longitude', 'Hotspot', and 'Predicted_Hotspot_GNN'. These are renamed internally to standardized names like 'State', 'County', etc._
+---
 
-2.  **Pollutant Data (`all_pollutants_merged_inner.csv`):**
-    * Contains pollutant measurements for various US counties.
-    * Expected to have a `Date Local` column from which the 'Year' is extracted.
-    * Should contain 'State Name' and 'County Name' for merging with hotspot data.
-    * Includes various pollutant measurement columns (e.g., `PM25`, `O3`, `NO2`, `SO2`, `CO`).
-    * Can also include monthly pollutant data (e.g., `PM25_Jan`, `PM25_Feb`, etc.) which the app will attempt to parse for monthly trend analysis.
+## 🛠️ Setup Instructions
 
-## ⚙️ Setup and Installation
+### 1. Clone the Repository
 
-To run this application locally, follow these steps:
+```bash
+git clone https://github.com/yourusername/disease-hotspot-dashboard.git
+cd disease-hotspot-dashboard
+```
 
-1.  **Clone the Repository (if applicable):**
-    ```bash
-    git clone <your-repository-url>
-    cd <your-repository-directory>
-    ```
+### 2. Install Dependencies
 
-2.  **Create a Virtual Environment (Recommended):**
-    ```bash
-    python -m venv venv
-    source venv/bin/activate  # On Windows: venv\Scripts\activate
-    ```
+```bash
+pip install -r requirements.txt
+```
 
-3.  **Install Required Libraries:**
-    The application primarily uses Streamlit, Pandas, and Plotly Express.
-    ```bash
-    pip install streamlit pandas plotly-express
-    ```
+### 3. Launch the App Locally
 
-4.  **Prepare Data Files:**
-    * Ensure you have the two required CSV files:
-        * `all_years_gnn_predictions_semi_supervised.csv` (for hotspot data)
-        * `all_pollutants_merged_inner.csv` (for pollutant data)
-    * Place these files in the same directory as the main Python script (e.g., `main.py`), or update the `HOTSPOT_DATA_PATH` and `POLLUTANT_DATA_PATH` constants at the beginning of the script with the correct file paths.
+```bash
+streamlit run main.py
+```
 
-## 🚀 Running the Application
+---
 
-1.  Navigate to the directory containing the main Python script (e.g., `main.py`) and your data files.
-2.  Run the Streamlit application from your terminal:
-    ```bash
-    streamlit run main.py
-    ```
-3.  Streamlit will open the application in your default web browser.
+## 📦 Requirements
 
-## 📈 Usage
+Core dependencies:
 
-* **Sidebar Filters:**
-    * **Select Year:** Choose the year for which you want to view data.
-    * **Select State:** Filter data by a specific US state or view data for "All States."
-    * **Select Counties:** Further refine your analysis by selecting one or more counties within the chosen state and year.
-    * **Select Pollutant for General Analysis:** If pollutant data is loaded, choose a specific pollutant from this dropdown to see its statistics and visualizations in the "Pollutant Analysis" tab and on the map hover.
-* **Main Dashboard Tabs:**
-    * **🗺️ Hotspot Intensity Map:** Displays an interactive map of US counties. The color intensity and size of markers indicate hotspot prediction scores and binary hotspot status. Hover over counties for more details, including the selected pollutant's value if available.
-    * **📈 Trends & Predictions:** Shows line charts illustrating the trend of hotspot counts over the available years for the selected scope.
-    * **🏆 Top Counties:** Presents bar charts of the top hotspot counties (based on prediction score or binary status) and states with the most hotspots for the selected year and scope.
-    * **🏭 Pollutant Analysis (Conditional):** This tab appears if pollutant data is successfully loaded and a pollutant is selected in the sidebar.
-        * **Key Statistics:** Displays a table with min, max, mean, median, and standard deviation for the selected pollutant within the filtered scope.
-        * **Distribution:** Shows a histogram of the selected pollutant's values, colored by hotspot status.
-        * **Average Levels:** A bar chart comparing average pollutant levels in hotspot vs. non-hotspot counties.
-        * **Pollutant vs. Prediction Score:** A scatter plot to explore the relationship between the selected pollutant and hotspot prediction scores.
-        * **Monthly Trends:** If monthly pollutant data (e.g., `PM25_Jan`, `PM25_Feb`) is detected in your pollutant CSV, you can select a "base pollutant" (e.g., PM25) to see its average monthly trend and identify the peak month.
-    * **💾 Data View & Download:** Displays the filtered (and merged) data in a table and provides a button to download it as a CSV file.
+* `streamlit`
+* `pandas`
+* `plotly`
+* `numpy`
 
-## 🔮 Potential Future Enhancements
+Install them via the provided `requirements.txt`.
 
-* More advanced statistical analysis options (e.g., correlation matrices, regression analysis).
-* User-configurable thresholds for defining hotspots.
-* Ability to compare multiple pollutants side-by-side.
-* Integration of additional demographic or socio-economic data.
-* Time-series forecasting for pollutant levels and hotspot occurrences.
-* User accounts for saving preferences or analyses.
+---
+
+## 💡 Future Enhancements
+
+* 🔄 Real-time streaming via Kafka and Spark
+* 📍 Enable FIPS-based filtering
+* 🌐 Integrate satellite and climate datasets
+* 🧪 Upload your own model for hotspot comparison
+* 📱 Improve mobile responsiveness
+
+---
+
+## 🤝 Contributors
+
+* **Aishwarya Banumathy**
+  MSBA Candidate @ UC Davis
+ 
+* **Adithya Sivakumar**
+  MSBA Candidate @ UC Davis
+
+* **Sanjay Puri**
+  MSBA Candidate @ UC Davis
+
+* **Deheng Peng**
+ MSBA Candidate @ UC Davis
+
+* **Sam Mathew**
+ MSBA Candidate @ UC Davis
